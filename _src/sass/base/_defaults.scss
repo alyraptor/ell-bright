@@ -1,0 +1,122 @@
+// ================================
+// Base & Typography Defaults
+// ================================
+
+// --------------------------------
+// Pseudo
+// --------------------------------
+
+::selection {
+	background: #777;
+	color: #fff;
+	text-shadow: none;
+}
+
+// --------------------------------
+// General
+// --------------------------------
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background: #fff;
+	color: #2C3E50;
+	@include setfont(open);
+	font-size: $body-font-size;
+	@include font-smoothing;
+}
+
+a {
+	color: #2C3E50;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		color: getcolor(gray);
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+
+// --------------------------------
+// Headlines
+// --------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include setfont(oswald);
+	text-transform: uppercase;
+	line-height: 1;
+	a {
+		color: #000;
+	}
+}
+
+h2, h2 a {
+	font-size: 2.4rem;
+	line-height: 2.8rem;
+	color: #fff;
+}
+
+h3, h3 a {
+	@include setfont(oswald, 300);
+	font-size: 2.4rem;
+	line-height: 2.8rem;
+	color: getcolor(green);
+}
+
+h4, h4 a {
+	@include setfont(oswald, 300);
+	font-size: 1.8rem;
+	line-height: 2rem;
+	color: getcolor(gray, news-title);
+}
+
+h5, h5 a {
+	font-size: 1.2rem;
+	line-height: 1.8rem;
+	color: getcolor(gray, news-title);
+}
+
+// --------------------------------
+// Text Components
+// --------------------------------
+
+p,
+dl,
+address {
+	@extend %type-medium;
+}
+
+p,
+li,
+dt,
+dd {
+	color: getcolor(gray);
+	font-weight: normal;
+	font-style: normal;
+}
+
+li {
+	line-height: 1;
+}
+
+p {
+	@include setfont(open);
+	font-size: 1.4rem;
+}
+
+// --------------------------------
+// Extend WYSIWYG Styles
+// --------------------------------
+
+.wysiwyg {
+	@extend %wysiwyg;
+}

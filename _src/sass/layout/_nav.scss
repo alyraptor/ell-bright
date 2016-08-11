@@ -1,0 +1,211 @@
+// ================================
+// Navigation
+// ================================
+
+header {
+	display: flex;
+	justify-content: center;
+}
+
+.navbar {
+	display: flex;
+	position: fixed;
+	width: 100%;
+	max-width: 144rem;
+	align-items: center;
+	justify-content: space-between;
+	margin: -0.4rem 0 0 0;
+	z-index: 3;
+	background: getcolor(white);
+
+	@include mq(large) {
+		position: absolute;
+		top: 0
+	}
+
+	.logo {
+		width: 20rem;
+		height: 10rem;
+		margin: 0 0 -2rem 1rem;
+		background-image: url("../../assets/images/logo.png");
+		background-size: cover;
+	}
+
+	.connect {
+		padding: 0 2rem 0 0;
+	}
+}
+
+.mobile-menu-icon {
+	padding: 0 2rem;
+
+	@include mq(large) {
+		display: none;
+	}
+
+	a.js-nav-expand {
+
+		.expand,
+		.close {
+			display: none;
+			padding: 1rem 0;
+			width: 7rem;
+			border: solid 0.3rem getcolor(green);
+			border-radius: 0.5rem;
+			color: getcolor(green);
+		    text-align: center;
+			@include setfont(open, 600);
+			transition: all 0.25s;
+
+			&:hover {
+				color: getcolor(gray);
+				border-color: getcolor(gray);
+			}
+
+			&.toggle {
+				display: block;
+			}
+		}
+
+	}
+}
+
+.menu,
+.connect {
+	display: none;
+
+	@include mq(large) {
+		display: block;
+	}
+}
+
+.menu {
+
+	li.menu-link {
+		display: inline-block;
+		list-style: none;
+
+		a {
+			padding: 0 1.6rem 2.7rem;
+			font-size: 1.4rem;
+			line-height: 2.9rem;
+			@include setfont(oswald, 300);
+			color: getcolor(gray);
+			text-transform: uppercase;
+		}
+
+		&:before {
+			content: '';
+			border-left: solid 1px getcolor(green);
+		}
+
+		&:first-child:before {
+			border: none;
+		}
+
+		&:hover {
+
+			a {
+				border-bottom: solid 0.3rem getcolor(blue);
+			}
+
+			.sub-menu {
+				display: block;
+			}
+		}
+	}
+}
+
+.sub-menu {
+	display: none;
+	position: absolute;
+	padding: 2rem 4rem;
+	width: 25rem;
+	top: 5.5rem;
+	left: 0.1rem;
+	background: linear-gradient(to bottom, rgba(220,220,220,1) 0,rgba(255,255,255,1) 2rem);
+
+	.sub-link {
+		display: block;
+		padding: 2rem 0;
+		@include setfont(open);
+		font-size: 1.4rem;
+
+		&:hover {
+			color: getcolor(green);
+
+			&:after {
+				display: block;
+			}
+		}
+
+		&:after {
+			display: none;
+			content: '';
+			position: absolute;
+			top: 4rem;
+			left: 0;
+			width: 3.7rem;
+			height: 0.4rem;
+			background: getcolor(green);
+		}
+	}
+
+}
+
+.mobile-menu-wrap {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	background: getcolor(green);
+
+	@include mq(medium) {
+		display: none;
+	}
+
+	.mobile-menu {
+		display: flex;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		> a {
+			font-size: 2.8rem;
+			line-height: 6rem;
+			@include setfont(oswald, 300);
+			color: getcolor(white);
+			text-transform: uppercase;
+			transition: all 0.25s;
+
+			&:hover {
+				color: getcolor(gray);
+			}
+		}
+
+		.sub-menu-mobile {
+			display: flex;
+			margin: 0 0 0 3rem;
+			flex-direction: column;
+			text-align: center;
+
+			a {
+				@include setfont(open);
+				font-size: 2rem;
+				line-height: 2rem;
+				color: getcolor(white);
+				transition: all 0.25s;
+
+				&:hover {
+					color: getcolor(gray);
+				}
+			}
+		}
+	}
+}

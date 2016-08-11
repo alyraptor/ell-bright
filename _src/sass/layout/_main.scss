@@ -1,0 +1,391 @@
+// ================================
+// Main
+// ================================
+
+body {
+	display: block;
+	height: 100%;
+}
+
+.hero {
+	padding: 7.6rem 0 0;
+}
+
+.carousel {
+
+	// Dots overlay
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -10rem;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url("../../assets/images/dots.png") no-repeat center center;
+		background-size: cover;
+		pointer-events: none;
+
+		@include mq(xlarge) {
+			top: -20rem;
+		}
+
+		@include mq(xxlarge) {
+			top: -32.2rem;
+			background-size: 100%;
+		}
+
+	}
+
+	.slide1,
+	.slide2,
+	.slide3 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
+		min-height: 30rem;
+		background: url("../../assets/images/slide1.png") no-repeat center center;
+		background-size: cover;
+
+		@include mq(large) {
+			min-height: 40rem;
+		}
+
+		@include mq(xlarge) {
+			min-height: 50rem;
+		}
+
+		@include mq(xxlarge) {
+			min-height: 82.2rem;
+		}
+	}
+
+	.slide-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 75%;
+		text-align: center;
+
+		h2 {
+			padding: 2rem;
+
+			@include mq(medium) {
+				padding: 4rem;
+				font-size: 4.4rem;
+				line-height: 5rem;
+				@include setfont(oswald, 300);
+			}
+
+			@include mq(xlarge) {
+				font-size: 6.4rem;
+				line-height: 7.2rem;
+			}
+
+			@include mq(xxlarge) {
+				font-size: 8rem;
+				line-height: 9rem;
+			}
+		}
+
+		//The super-fancy gradient border button
+		.carousel-button {
+			display: flex;
+			padding: 2rem 4rem;
+			margin: 1rem 0 0;
+			background: rgba(0, 0, 0, .5);
+			@include setfont(oswald, 300);
+			font-size: 2rem;
+			text-transform: uppercase;
+			color: getcolor(white);
+			border: 0.1rem solid getcolor(green);
+			border-image: repeating-linear-gradient(65deg, getcolor(blue), getcolor(green)) 10;
+			z-index: 1;
+
+			i {
+				margin: 0 0 0 3rem;
+			}
+
+			&:hover {
+				background: linear-gradient(65deg, getcolor(blue), getcolor(green));
+			}
+
+			@include mq(small) {
+				margin: 2rem 0 0;
+			}
+
+			@include mq(medium) {
+				margin: -2rem;
+			}
+
+			@include mq(large) {
+				margin: 0rem;
+			}
+		}
+	}
+
+	.carousel-counter {
+		display: flex;
+		position: absolute;
+		margin: 0 0 0 -16.5rem;
+		width: 33rem;
+		height: 0.8rem;
+		bottom: 0;
+		left: 50%;
+		right: 50%;
+		background: rgba(150,150,150,0.7);
+
+		@include mq(small) {
+			margin: 0 0 0 -33.1rem;
+			width: 66.2rem;
+		}
+
+		@include mq(util) {
+			margin: 0 0 0 -52rem;
+		}
+
+		.counter1, .counter2, .counter3 {
+			display: block;
+			position: absolute;
+			width: 11.1rem;
+			height: 100%;
+			top: 0;
+			background: none;
+			transition: all 0.25s;
+
+			@include mq(small) {
+				width: 22.1rem;
+			}
+		}
+
+		.counter1 {
+			left: 0;
+
+			@include mq(small) {
+				width: 22.2rem;
+			}
+		}
+
+		.counter1.active, .counter1:hover {
+			background: getcolor(blue);
+		}
+
+		.counter2 {
+			left: 11.1rem;
+			border-left: solid 0.1rem getcolor(black);
+
+			@include mq(small) {
+				left: 22.2rem;
+			}
+		}
+
+		.counter2.active, .counter2:hover {
+			background: linear-gradient(90deg, getcolor(blue), getcolor(green));
+		}
+
+		.counter3 {
+			left: 22.2rem;
+			border-left: solid 0.1rem getcolor(black);
+
+			@include mq(small) {
+				left: 44.3rem;
+			}
+		}
+
+		.counter3.active, .counter3:hover {
+			background: getcolor(green);
+		}
+	}
+}
+
+.below-fold {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: getcolor(gray, light);
+
+	@include mq(util) {
+		flex-direction: row;
+	}
+}
+
+.callouts {
+	display: inline-block;
+
+	.callout-text {
+		padding: 3rem;
+
+		p {
+			padding: 1.4rem 0 0;
+		}
+	}
+
+	@include mq(util) {
+		max-width: 71.8rem;
+	}
+}
+
+.callout-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0 2rem 2rem;
+}
+
+.callout-buttons button {
+	display: block;
+	margin: 2rem 0.9rem 1rem;
+	padding: 0;
+	border: none;
+
+	@include mq(medium) {
+		margin: 2rem 0.9rem 0;
+	}
+
+	a {
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		width: 32.1rem;
+		height: 11.1rem;
+		padding: 0 2.4rem;
+		font-size: 2rem;
+		line-height: 2.4rem;
+		color: getcolor(white);
+		@include setfont(oswald, 300);
+		text-transform: uppercase;
+		border-top: 0.5rem solid getcolor(green);
+
+		span {
+			display: block;
+			padding: 0.8rem;
+			min-width: 18rem;
+		}
+
+		//These :before elements are for a subtle hover effect
+		&:before {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			content: '';
+			background-color: rgba(255, 255, 255, 0);
+			transition: background-color 0.25s;
+		}
+
+		&:hover {
+			&:before {
+				background-color: rgba(255, 255, 255, 0.2);
+			}
+		}
+
+		.callout-icon-insight, 
+		.callout-icon-questions {
+			display: block;
+			height: 4.9rem;
+			flex-basis: 4.9rem;
+			flex-shrink: 0;
+		}
+
+		.callout-icon-arrow {
+			display: block;
+			height: 3.5rem;
+			flex-basis: 3.5rem;
+			flex-shrink: 0;
+		}
+	}
+
+	&:first-of-type {
+		background-image: url("../../assets/images/button1.jpg");
+	}
+
+	&:nth-of-type(2) {
+		background-image: url("../../assets/images/button2.jpg");			
+	}
+}
+
+.recent-news {
+	padding: 2rem 2rem 4rem;
+	max-height: 47.2rem; // Max-height keeps the hover effect on .divider from pushing down the content below.
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: baseline;
+
+	@include mq(medium) {
+		max-height: 38.8rem;
+	}
+
+	@include mq(util) {
+		margin: -8.2rem 0 0;
+		max-height: 47.2rem;
+	}
+}
+
+.news-box {
+	width: 34rem;
+	background: getcolor(white);
+	border-top: 0.5rem solid getcolor(green);
+
+	@include mq(medium) {
+		width: 61rem;
+	}
+
+	@include mq(util) {
+		width: 34rem;
+	}
+	
+	h4 {
+		padding: 1.8rem 2.4rem;
+		border-bottom: 0.1rem solid getcolor(gray, border);
+	}
+}
+
+.news-article:not(:last-child) {
+	border-bottom: 0.1rem solid getcolor(gray, border);
+}
+
+.news-stories {
+
+	.news-article {
+		padding: 2rem 2.4rem;
+		display: block;
+
+		h5 {
+			padding: 0 0 1.4rem;
+		}
+
+		.article-text {
+			color: getcolor(gray, headline);
+			font-size: 1.2rem;
+			line-height: 1.6rem;
+		}
+
+		.divider {
+			display: block;
+			width: 2.9rem;
+			height: 0rem;
+			background-color: getcolor(green);
+			transition: margin 0.25s;
+		}
+
+		&:hover {
+			background-color: getcolor(gray, news-hover);
+
+			.divider {
+				height: 0.5rem;
+				margin: 0 0 1.4rem;
+			}
+		}
+	}
+}
